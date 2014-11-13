@@ -1,15 +1,25 @@
 'use strict';
 
 angular.module('eui-angularfire')
-  .controller('ChatCtrl', function ($firebase) {
-    var ref = new Firebase('https://chat-jkjustjoshing.firebaseio.com/messages');
-    // create an AngularFire reference to the data
-    var sync = $firebase(ref);
-    // download the data into a local object
-    this.messages = sync.$asObject();
+  .controller('ChatCtrl', function (Chatroom) {
 
+    var chatroom = Chatroom('josh-room');
+
+    this.messages = chatroom.getMessages();
+console.log(this.messages,'foo')
 
     this.post = function(message) {
-      sync.$push({text: message, username: 'barry'});
+      chatroom.postMessage(message);
     };
+
+    this.changeRoom = function(newRoom) {
+      chatroom = Chatroom(newRoom);
+      this.messages = chatroom.getMessages();
+    };
+
+    this.createRoom = function(newRoom) {
+     Chatroom.createRoom(newRoom);
+    };
+
+    this.rooms = Chatroom.getRooms();
   });

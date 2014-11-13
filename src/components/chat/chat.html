@@ -8,4 +8,14 @@
   <form ng-submit="chat.post(chat.message)">
     <input ng-model="chat.message" />
   </form>
+
+  <form ng-submit="chat.createRoom(chat.roomName)">
+    <input ng-model="chat.roomName" />
+  </form>
+
+  <ul>
+    <li ng-repeat="(room, info) in chat.rooms" ng-click="chat.changeRoom(room)">
+      {{room|json}} - {{info|json}}
+    </li>
+  </ul>
 </div>
