@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularfire')
+angular.module('eui-angularfire')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       {

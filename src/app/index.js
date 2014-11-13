@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularfire', ['ngAnimate', 'ngSanitize', 'ui.router'])
+angular.module('eui-angularfire', ['ngAnimate', 'ngSanitize', 'ui.router', 'firebase'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

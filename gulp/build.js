@@ -35,7 +35,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.ngHtml2js({
-      moduleName: 'angularfire'
+      moduleName: 'eui-angularfire'
     }))
     .pipe(gulp.dest('.tmp'))
     .pipe($.size());
