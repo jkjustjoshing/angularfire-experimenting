@@ -5,6 +5,11 @@ angular.module('eui-angularfire')
 
     this.createRoom = function(newRoom) {
       Chat.createRoom(newRoom);
+      this.selectRoom(newRoom);
+    };
+
+    this.selectRoom = function(selectedRoom) {
+      this.selected = selectedRoom;
     };
 
     this.rooms = Chat.getRooms();

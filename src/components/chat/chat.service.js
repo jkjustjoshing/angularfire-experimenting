@@ -7,7 +7,7 @@ angular.module('eui-angularfire')
 
       var ref = new Firebase('https://chat-jkjustjoshing.firebaseio.com/chats/messages/' + chatroom);
       // create an AngularFire reference to the data
-      var sync = $firebase(ref);
+      var sync = $firebase(ref.limit(10));
 
       this.getMessages = function() {
         // download the data into a local object

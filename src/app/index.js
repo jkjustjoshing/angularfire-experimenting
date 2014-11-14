@@ -6,7 +6,8 @@ angular.module('eui-angularfire', ['ngAnimate', 'ngSanitize', 'ui.router', 'fire
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        controllerAs: 'main'
       });
 
     $urlRouterProvider.otherwise('/');

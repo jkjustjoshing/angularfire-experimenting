@@ -1,7 +1,7 @@
 <div>
   <ul>
-    <li ng-repeat="room in chatroomlist.rooms">
-      {{room|json}}
+    <li ng-repeat="(room, details) in chatroomlist.rooms" ng-click="chatroomlist.selectRoom(room)">
+      {{room}} - {{details|json}}
     </li>
   </ul>
   <form ng-submit="chatroomlist.createRoom(chatroomlist.roomName)">

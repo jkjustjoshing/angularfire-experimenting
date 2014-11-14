@@ -4,7 +4,9 @@ angular.module('eui-angularfire')
   .directive('chatroomList', function () {
 
     return {
-      scope: true,
+      scope: {
+        selected: '=',
+      },
       controller: 'ChatroomListCtrl',
       controllerAs: 'chatroomlist',
       bindToController: true,
