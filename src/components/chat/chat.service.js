@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('eui-angularfire')
-  .factory('Chatroom', function ($firebase) {
+  .factory('Chatroom', function ($firebase, firebaseAuth) {
 
     var Chatroom = function(chatroom) {
 
@@ -15,7 +15,11 @@ angular.module('eui-angularfire')
       };
 
       this.postMessage = function(message) {
-        sync.$push({text: message, username: 'barry'});
+        if(firebaseAuth.user) {
+          sync.$push({text: message, uid: firebaseAuth.user.uid});
+        } else {
+          throw new Error('Not logged in');
+        }
       };
     };
 
@@ -29,11 +33,13 @@ angular.module('eui-angularfire')
       var ref = new Firebase('https://chat-jkjustjoshing.firebaseio.com/chats/rooms');
       // create an AngularFire reference to the data
       var sync = $firebase(ref);
-      sync.$set(roomName, {
-        test: 1,
-        test2: 2
-      });
-
+      if(firebaseAuth.user) {
+        sync.$set(roomName, {
+          creator: firebaseAuth.user.uid
+        });
+      } else {
+        throw new Error('Not logged in');
+      }
     };
 
 
