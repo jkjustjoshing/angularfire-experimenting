@@ -4,55 +4,34 @@ var gulp = require('gulp');
 
 var util = require('util');
 
-var browserSync = require('browser-sync');
-
+var express = require('express');
+var lrserver = require('tiny-lr')();
+var livereload = require('connect-livereload');
+var livereloadPort = 35729;
+var serverPort = 3000;
 var middleware = require('./proxy');
 
-function browserSyncInit(baseDir, files, browser) {
-  browser = browser === undefined ? 'default' : browser;
-
-  var routes = null;
-  if(baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1)) {
-    routes = {
-      // Should be '/bower_components': '../bower_components'
-      // Waiting for https://github.com/shakyShane/browser-sync/issues/308
-      '/bower_components': 'bower_components'
-    };
-  }
-
-  browserSync.instance = browserSync.init(files, {
-    startPath: '/index.html',
-    server: {
-      baseDir: baseDir,
-      middleware: middleware,
-      routes: routes
-    },
-    browser: browser
-  });
-
-}
+var server = express();
+server.use(livereload({
+  port: livereloadPort
+}));
 
 gulp.task('serve', ['watch'], function () {
-  browserSyncInit([
-    'src',
-    '.tmp'
-  ], [
-    '.tmp/{app,components}/**/*.css',
-    'src/assets/images/**/*',
-    'src/*.html',
-    'src/{app,components}/**/*.html',
-    'src/{app,components}/**/*.js'
-  ]);
+  server.use(express.static('.tmp'));
+  server.use(express.static('src'));
+  server.use('/bower_components', express.static('bower_components'));
+
+  server.listen(serverPort);
 });
 
-gulp.task('serve:dist', ['build'], function () {
-  browserSyncInit('dist');
-});
+// gulp.task('serve:dist', ['build'], function () {
+//   browserSyncInit('dist');
+// });
 
-gulp.task('serve:e2e', function () {
-  browserSyncInit(['src', '.tmp'], null, []);
-});
+// gulp.task('serve:e2e', function () {
+//   browserSyncInit(['src', '.tmp'], null, []);
+// });
 
-gulp.task('serve:e2e-dist', ['watch'], function () {
-  browserSyncInit('dist', null, []);
-});
+// gulp.task('serve:e2e-dist', ['watch'], function () {
+//   browserSyncInit('dist', null, []);
+// });
