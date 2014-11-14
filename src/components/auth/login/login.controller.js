@@ -11,4 +11,8 @@ angular.module('eui-angularfire')
       firebaseAuth.$login(email, password);
     };
 
+    this.logout = function() {
+      firebaseAuth.$logout();
+    };
+
   });

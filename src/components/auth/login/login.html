@@ -4,5 +4,5 @@
   <input type="submit">
 </form>
 <div ng-if="login.getUser()">
-  Logged in
+  Logged in as {{login.getUser().email}} <button ng-click="login.logout()">Logout</button>
 </div>
