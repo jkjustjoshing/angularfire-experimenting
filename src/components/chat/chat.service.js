@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('eui-angularfire')
-  .factory('Chatroom', function () {
+  .factory('Chatroom', function ($firebase) {
 
     var Chatroom = function(chatroom) {
 
@@ -9,14 +9,13 @@ angular.module('eui-angularfire')
       // create an AngularFire reference to the data
       var sync = $firebase(ref);
 
-      return {
-        getMessages: function() {
-          // download the data into a local object
-          return sync.$asObject();
-        },
-        postMessage: function(message) {
-          sync.$push({text: message, username: 'barry'});
-        }
+      this.getMessages = function() {
+        // download the data into a local object
+        return sync.$asObject();
+      };
+
+      this.postMessage = function(message) {
+        sync.$push({text: message, username: 'barry'});
       };
     };
 
@@ -34,7 +33,6 @@ angular.module('eui-angularfire')
         test: 1,
         test2: 2
       });
-
 
     };
 
