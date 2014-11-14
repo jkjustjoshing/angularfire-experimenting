@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('eui-angularfire')
-  .directive('chat', function () {
+  .directive('chatroom', function () {
 
     return {
       scope: {
         room: '@'
       },
-      controller: 'ChatCtrl',
+      controller: 'ChatroomCtrl',
       controllerAs: 'chat',
       bindToController: true,
-      templateUrl: 'components/chat/chat.html'
+      templateUrl: 'components/chat/chatroom/chatroom.html'
     };
   });

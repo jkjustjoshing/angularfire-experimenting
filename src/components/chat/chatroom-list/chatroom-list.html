@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li ng-repeat="room in chatroomlist.rooms">
+      {{room|json}}
+    </li>
+  </ul>
+  <form ng-submit="chatroomlist.createRoom(chatroomlist.roomName)">
+    <input ng-model="chatroomlist.roomName" placeholder="new room" />
+  </form>
+</div>
