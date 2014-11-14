@@ -1,14 +1,17 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+.chatroom-container {
+  height: 300px;
 }
 
-.thumbnail {
-  height: 200px;
+.chatroom {
+  float:left;
+  height:100%;
+  width: 70%;
+  background: olive;
+}
 
-  img.pull-right {
-    width: 50px;
-  }
+.chatroom-list {
+  float: left;
+  height: 100%;
+  width: 30%;
+  background: powderblue;
 }

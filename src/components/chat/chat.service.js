@@ -2,12 +2,14 @@
 
 angular.module('eui-angularfire')
   .factory('Chat', function ($firebase, firebaseAuth) {
+    var DEFAULT_LIMIT = 10;
 
-    var Chatroom = function(chatroom) {
+
+    var Chatroom = function(chatroom, limit) {
 
       var ref = new Firebase('https://chat-jkjustjoshing.firebaseio.com/chats/messages/' + chatroom);
       // create an AngularFire reference to the data
-      var sync = $firebase(ref.limit(10));
+      var sync = $firebase(ref.limit(limit || DEFAULT_LIMIT));
 
       this.getMessages = function() {
         // download the data into a local object

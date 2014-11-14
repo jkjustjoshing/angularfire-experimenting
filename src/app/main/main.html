@@ -2,9 +2,10 @@
 
   <div ng-include="'components/navbar/navbar.html'"></div>
 
-  <chatroom-list class="chatroom-list" selected="main.room"></chatroom-list>
-
-  <chatroom room="{{main.room}}"></chatroom>
+  <div class="chatroom-container">
+    <chatroom-list class="chatroom-list" selected="main.room"></chatroom-list>
+    <chatroom class="chatroom" room="{{main.room}}"></chatroom>
+  </div>
 
   <div class="footer">
     <p>Made by <a href="https://twitter.com/jkjustjoshing">@jkjustjoshing</a></p>
