@@ -1,0 +1,8 @@
+<form ng-submit="login.login(login.email, login.password)" ng-if="!login.getUser()">
+  <input type="email" placeholder="email" ng-model="login.email">
+  <input type="password" placeholder="password" ng-model="login.password">
+  <input type="submit">
+</form>
+<div ng-if="login.getUser()">
+  Logged in
+</div>
