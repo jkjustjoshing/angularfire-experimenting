@@ -16,12 +16,27 @@ server.use(livereload({
   port: livereloadPort
 }));
 
+function notifyLivereload(event) {
+
+  var fileName = require('path').relative(__dirname, event.path);
+
+  lrserver.changed({
+    body: {
+      files: [fileName]
+    }
+  });
+}
+
+
 gulp.task('serve', ['watch'], function () {
   server.use(express.static('.tmp'));
   server.use(express.static('src'));
   server.use('/bower_components', express.static('bower_components'));
 
   server.listen(serverPort);
+  lrserver.listen(livereloadPort);
+
+  gulp.watch(['.tmp/**/*', 'src/**/*'], notifyLivereload);
 });
 
 // gulp.task('serve:dist', ['build'], function () {
