@@ -15,8 +15,12 @@ angular.module('eui-angularfire')
       }
     }));
 
-    this.post = function(message) {
-      console.log('post', message)
-      chatroom.postMessage(message);
+    this.post = function() {
+      try {
+        chatroom.postMessage(this.message);
+        this.message = '';
+      } catch (e) {
+        window.alert('Not logged in');
+      }
     };
   });
