@@ -6,6 +6,7 @@ angular.module('eui-angularfire')
     var BOARD_WIDTH = 8;
     var BOARD_HEIGHT = 8;
     var ROWS_OF_PIECES = 3;
+    var SQUARE_WIDTH = 20;
     var RED = 'red';
     var BLACK = 'black';
 
@@ -61,6 +62,7 @@ angular.module('eui-angularfire')
 
     CheckerBoard.prototype.BOARD_WIDTH = BOARD_WIDTH;
     CheckerBoard.prototype.BOARD_HEIGHT = BOARD_HEIGHT;
+    CheckerBoard.prototype.SQUARE_WIDTH = SQUARE_WIDTH;
 
     return CheckerBoard;
   });

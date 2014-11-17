@@ -5,6 +5,5 @@ angular.module('eui-angularfire')
 
     this.board = new CheckerBoard();
 console.log(this.board);
-    this.squareWidth = 20;
 
   });
