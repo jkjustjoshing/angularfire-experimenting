@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div ng-include="'components/navbar/navbar.html'"></div>
+
+  <svg ng-attr-height="{{::(checkers.board.BOARD_HEIGHT * checkers.squareWidth)}}"
+       ng-attr-width="{{::(checkers.board.BOARD_WIDTH * checkers.squareWidth)}}"
+       xmlns="http://www.w3.org/2000/svg">
+    <g   ng-repeat="(rowIndex, row) in checkers.board.spots"
+         ng-attr-height="{{::checkers.squareWidth}}"
+         ng-attr-width="{{::(checkers.board.BOARD_WIDTH * checkers.squareWidth)}}"
+         x="0"
+         ng-attr-y="{{::(rowIndex * checkers.squareWidth)}}">
+      <rect ng-repeat="(colIndex, col) in row"
+            ng-attr-width="{{::checkers.squareWidth}}"
+            ng-attr-height="{{::checkers.squareWidth}}"
+            ng-attr-x="{{::(colIndex * checkers.squareWidth)}}"
+            ng-attr-y="{{::(rowIndex * checkers.squareWidth)}}"
+            ng-attr-fill="{{::( (colIndex+rowIndex)%2 == 0 ? '#333333' : '#CC0000')}}"></rect>
+    </g>
+
+
+    <circle checker-piece="piece"
+            ng-repeat="piece in checkers.board.pieces"
+            ng-attr-cy="{{(piece.row * checkers.squareWidth) + (checkers.squareWidth/2)}}"
+            ng-attr-cx="{{(piece.col * checkers.squareWidth) + (checkers.squareWidth/2)}}"
+            ng-attr-r="{{::((checkers.squareWidth/2)-1)}}"
+            ng-attr-fill="{{::(piece.player)}}"
+            stroke="black"/>
+  </svg>
+
+
+  <div class="footer">
+    <p>Made by <a href="https://twitter.com/jkjustjoshing">@jkjustjoshing</a></p>
+  </div>
+
+</div>
