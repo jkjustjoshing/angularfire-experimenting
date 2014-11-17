@@ -43,7 +43,8 @@ angular.module('eui-angularfire')
         var sync = $firebase(ref);
         if(firebaseAuth.user) {
           sync.$set(roomName, {
-            creator: firebaseAuth.user.uid
+            creator: firebaseAuth.user.uid,
+            name: roomName
           });
         } else {
           throw new Error('Not logged in');
