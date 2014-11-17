@@ -13,8 +13,22 @@ angular.module('eui-angularfire')
     function CheckerPiece(player, row, col) {
       this.king = false;
       this.player = player;
-      this.row = row;
-      this.col = col;
+      var _row = row;
+      var _col = col;
+      this.row = function(newVal) {
+        if(newVal !== undefined) {
+          _row = newVal;
+        } else {
+          return _row;
+        }
+      };
+      this.col = function(newVal) {
+        if(newVal !== undefined) {
+          _col = newVal;
+        } else {
+          return _col;
+        }
+      };
     }
 
     function CheckerSpotPieceBinder(pieces) {

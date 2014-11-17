@@ -42,8 +42,8 @@ angular.module('eui-angularfire')
             var col = Math.floor(finalLocation.x / checkerBoardCtrl.board.SQUARE_WIDTH);
             if(checkerBoardCtrl.board.spots[row][col].open()) {
               scope.$apply(function() {
-                scope.piece.row = row;
-                scope.piece.col = col;
+                scope.piece.row(row);
+                scope.piece.col(col);
               });
             } else {
               element.attr('cx', initialPieceLocation.x);

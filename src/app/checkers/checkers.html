@@ -22,8 +22,8 @@
 
     <circle checker-piece="piece"
             ng-repeat="piece in checkers.board.pieces"
-            ng-attr-cy="{{(piece.row * checkers.board.SQUARE_WIDTH) + (checkers.board.SQUARE_WIDTH/2)}}"
-            ng-attr-cx="{{(piece.col * checkers.board.SQUARE_WIDTH) + (checkers.board.SQUARE_WIDTH/2)}}"
+            ng-attr-cy="{{(piece.row() * checkers.board.SQUARE_WIDTH) + (checkers.board.SQUARE_WIDTH/2)}}"
+            ng-attr-cx="{{(piece.col() * checkers.board.SQUARE_WIDTH) + (checkers.board.SQUARE_WIDTH/2)}}"
             ng-attr-r="{{::((checkers.board.SQUARE_WIDTH/2)-1)}}"
             ng-attr-fill="{{::(piece.player)}}"
             stroke="black"/>
