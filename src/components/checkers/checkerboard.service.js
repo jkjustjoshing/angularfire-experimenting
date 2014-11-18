@@ -40,8 +40,8 @@ angular.module('eui-angularfire')
         };
         this.piece = function() {
           for(var index = 0; index < pieces.length; ++index) {
-            if(pieces[index].col === this.col &&
-               pieces[index].row === this.row) {
+            if(pieces[index].col() === this.col &&
+               pieces[index].row() === this.row) {
               return pieces[index];
             }
           }
